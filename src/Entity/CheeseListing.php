@@ -18,13 +18,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource(
  *     shortName="cheeses",
- *     collectionOperations={"get", "post"},
+ *     collectionOperations={
+ *          "get",
+ *          "post"={"access_control"="is_granted('ROLE_USER')"}
+ *     },
  *     itemOperations={
  *          "get"={
  *              "path"="/cheeses/{id}",
  *               "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}}
  *          },
- *          "put"
+ *          "put"={"access_control"="is_granted('ROLE_USER')"},
+ *          "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
  *     },
  *     attributes={
  *          "pagination_items_per_page"=10,
