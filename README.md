@@ -1,1 +1,1 @@
-# API Platform Tutorial part 1 Learning from SymfonyCasts
+# API Platform Tutorial part 1 and part 2 Learning from SymfonyCasts
