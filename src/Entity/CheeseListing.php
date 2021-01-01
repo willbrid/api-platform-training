@@ -20,15 +20,18 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     shortName="cheeses",
  *     collectionOperations={
  *          "get",
- *          "post"={"access_control"="is_granted('ROLE_USER')"}
+ *          "post"={"security"="is_granted('ROLE_USER')"}
  *     },
  *     itemOperations={
  *          "get"={
  *              "path"="/cheeses/{id}",
  *               "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}}
  *          },
- *          "put"={"access_control"="is_granted('ROLE_USER')"},
- *          "delete"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *          "put"={
+ *              "security"="is_granted('CHEESE_EDIT', object)",
+ *              "security_message"="Only the creator can edit a cheese listing"
+ *          },
+ *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
  *     },
  *     attributes={
  *          "pagination_items_per_page"=10,
