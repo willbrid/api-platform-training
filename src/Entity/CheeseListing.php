@@ -24,8 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *     itemOperations={
  *          "get"={
- *              "path"="/cheeses/{id}",
- *               "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}}
+ *              "path"="/cheeses/{id}"
  *          },
  *          "put"={
  *              "security"="is_granted('CHEESE_EDIT', object)",
@@ -36,9 +35,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     attributes={
  *          "pagination_items_per_page"=10,
  *          "formats"={"jsonld", "json", "html", "jsonhal", "csv"={"text/csv"}}
- *     },
- *     normalizationContext={"groups"={"cheese_listing:read"}, "swagger_definition_name"="Read"},
- *     denormalizationContext={"groups"={"cheese_listing:write"}, "swagger_definition_name"="Write"}
+ *     }
  * )
  * @ApiFilter(BooleanFilter::class, properties={"isPublished"})
  * @ApiFilter(SearchFilter::class, properties={
