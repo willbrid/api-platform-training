@@ -30,6 +30,5 @@ services:
     App\ApiPlatform\AutoGroupResourceMetadataFactory:
         decorates: 'api_platform.metadata.resource.metadata_factory'
         arguments: ['@App\ApiPlatform\AutoGroupResourceMetadataFactory.inner']
+        # decoration_priority: -20 # Very important in production
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones

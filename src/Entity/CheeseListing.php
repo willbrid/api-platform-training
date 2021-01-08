@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     shortName="cheeses",
+ *     shortName="cheese",
  *     collectionOperations={
  *          "get",
  *          "post"={"security"="is_granted('ROLE_USER')"}
@@ -59,7 +59,7 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read", "user:write"})
+     * @Groups({"cheese:read", "cheese:write", "user:read", "user:write"})
      *
      * @Assert\NotBlank()
      * @Assert\Length(
@@ -72,7 +72,7 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"cheese_listing:read"})
+     * @Groups({"cheese:read"})
      *
      * @Assert\NotBlank()
      */
@@ -82,7 +82,7 @@ class CheeseListing
      * The price of this delicious cheese in cents.
      *
      * @ORM\Column(type="integer")
-     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read", "user:write"})
+     * @Groups({"cheese:read", "cheese:write", "user:read", "user:write"})
      *
      * @Assert\NotBlank()
      * @Assert\GreaterThan(value="0")
@@ -103,7 +103,7 @@ class CheeseListing
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cheeseListings")
      * @ORM\JoinColumn(nullable=false)
      *
-     * @Groups({"cheese_listing:read", "cheese_listing:write"})
+     * @Groups({"cheese:read", "cheese:write"})
      * @Assert\Valid()
      */
     private $owner;
@@ -137,7 +137,7 @@ class CheeseListing
     }
 
     /**
-     * @Groups({"cheese_listing:read"})
+     * @Groups({"cheese:read"})
      *
      * @return null|string
      */
@@ -153,7 +153,7 @@ class CheeseListing
     /**
      * The description of the cheese as raw text.
      *
-     * @Groups({"cheese_listing:write", "user:write"})
+     * @Groups({"cheese:write", "user:write"})
      * @SerializedName("description")
      *
      * @param string $description
@@ -186,7 +186,7 @@ class CheeseListing
     /**
      * How long ago in text that this cheese listing was added.
      *
-     * @Groups({"cheese_listing:read"})
+     * @Groups({"cheese:read"})
      *
      * @return string
      */

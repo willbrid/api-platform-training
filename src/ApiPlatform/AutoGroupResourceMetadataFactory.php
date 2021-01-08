@@ -22,12 +22,12 @@ class AutoGroupResourceMetadataFactory implements ResourceMetadataFactoryInterfa
         $resourceMetadata = $this->decorated->create($resourceClass);
 
         $itemOperations = $resourceMetadata->getItemOperations();
-        $resourceMetadata->withItemOperations(
+        $resourceMetadata = $resourceMetadata->withItemOperations(
             $this->updateContextOnOperations($itemOperations, $resourceMetadata->getShortName(), true)
         );
 
         $collectionOperations = $resourceMetadata->getCollectionOperations();
-        $resourceMetadata->withCollectionOperations(
+        $resourceMetadata = $resourceMetadata->withCollectionOperations(
             $this->updateContextOnOperations($collectionOperations, $resourceMetadata->getShortName(), false)
         );
 
